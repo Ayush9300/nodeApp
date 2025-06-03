@@ -42,7 +42,7 @@ const Home = () => {
   // get all notes
   const getAllNotes = async () => {
     try {
-      const res = await axios.get("http://localhost:3000/api/note/all", {
+      const res = await axios.get("hhttps://nodeapp-1h0h.onrender.com", {
         withCredentials: true,
       })
 
@@ -69,7 +69,7 @@ const Home = () => {
 
     try {
       const res = await axios.delete(
-        "http://localhost:3000/api/note/delete/" + noteId,
+        "https://nodeapp-1h0h.onrender.com" + noteId,
         { withCredentials: true }
       )
 
@@ -87,7 +87,7 @@ const Home = () => {
 
   const onSearchNote = async (query) => {
     try {
-      const res = await axios.get("http://localhost:3000/api/note/search", {
+      const res = await axios.get("https://nodeapp-1h0h.onrender.com", {
         params: { query },
         withCredentials: true,
       })
@@ -115,7 +115,7 @@ const Home = () => {
 
     try {
       const res = await axios.put(
-        "http://localhost:3000/api/note/update-note-pinned/" + noteId,
+        "https://nodeapp-1h0h.onrender.com" + noteId,
         { isPinned: !noteData.isPinned },
         { withCredentials: true }
       )
