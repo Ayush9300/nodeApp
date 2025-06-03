@@ -25,14 +25,9 @@ export const signup = async (req, res, next) => {
   try {
     await newUser.save()
     
- res.cookie("access_token", token, {
-  httpOnly: true,
-  secure: true,
-  sameSite: "None",
- }).status(200).json({
-  success: true,
-  message: "Login Successful!",
-   rest,
+ res.status(201).json({
+      success: true,
+      message: "User Created Successfully",
     })
   } catch (error) {
     next(error)
@@ -59,14 +54,10 @@ export const signin = async (req, res, next) => {
 
     const { password: pass, ...rest } = validUser._doc
 
- res.cookie("access_token", token, {
-  httpOnly: true,
-  secure: true,       // important on Render/Netlify
-  sameSite: "None"    // cross-origin cookie support
-}).status(200).json({
-  success: true,
-  message: "Login Successful!",
-   rest,          // ✅ Wrap inside 'user'
+ res.cookie("access_token", token, { httpOnly: true }).status(200).json({
+      success: true,
+      message: "Login Successful!",
+      rest,
 })
   } catch (error) {
     next(error)
@@ -75,15 +66,11 @@ export const signin = async (req, res, next) => {
 
 export const signout = async (req, res, next) => {
   try {
-   res.clearCookie("access_token", {
-  httpOnly: true,
-  secure: true,
-  sameSite: "None",
-});
+   res.clearCookie("access_token")
 
-res.status(200).json({
-  success: true,
-  message: "User logged out successfully",
+    res.status(200).json({
+      success: true,
+      message: "User logged out successfully",
 })
   } catch (error) {
     next(error)
