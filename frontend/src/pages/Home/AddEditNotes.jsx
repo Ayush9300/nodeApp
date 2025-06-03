@@ -18,7 +18,7 @@ const AddEditNotes = ({ onClose, noteData, type, getAllNotes }) => {
 
     try {
       const res = await axios.post(
-        "https://nodeapp-1h0h.onrender.com" + noteId,
+        "http://localhost:3000/api/note/edit/" + noteId,
         { title, content, tags },
         { withCredentials: true }
       )
@@ -46,7 +46,7 @@ const AddEditNotes = ({ onClose, noteData, type, getAllNotes }) => {
   const addNewNote = async () => {
     try {
       const res = await axios.post(
-        "https://nodeapp-1h0h.onrender.com",
+        "http://localhost:3000/api/note/add",
         { title, content, tags },
         { withCredentials: true }
       )
