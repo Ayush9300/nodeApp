@@ -25,9 +25,10 @@ export const signup = async (req, res, next) => {
   try {
     await newUser.save()
 
-    res.status(201).json({
+ res.cookie("access_token", token, { httpOnly: true }).status(200).json({
       success: true,
-      message: "User Created Successfully",
+      message: "Login Successful!",
+      rest,
     })
   } catch (error) {
     next(error)
